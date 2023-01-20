@@ -1,8 +1,7 @@
-package ua.com.drabchak.demo;
+package ua.com.drabchak.demo.util;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ua.com.drabchak.demo.util.EquanationSystemSolver;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.withPrecision;

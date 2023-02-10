@@ -1,13 +1,11 @@
 package ua.com.drabchak.demo;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+import ua.com.drabchak.demo.util.StreamService;
+
+public class App {
+    public static void main(String[] args) {
+        StreamService streamService = StreamService.getInstance();
+
+        streamService.run();
     }
 }

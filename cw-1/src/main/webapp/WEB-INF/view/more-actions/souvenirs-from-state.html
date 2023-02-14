@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form th:method="GET" th:action="@{/utils/souvenir_from_state/find}">
+        <label for="state"></label>
+        <input type="text" name="state" id="state" placeholder="Input state"/>
+
+        <input type="submit" value="Find"/>
+    </form>
+    <br/>
+    <hr/>
+    <div th:if="${not #lists.isEmpty(souvenirs)}">
+        <table border="2px solid">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Souvenir name</th>
+                <th>Manufacturer</th>
+                <th>Date</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody th:each="souvenir : ${souvenirs}">
+            <tr>
+                <td th:text="${souvenir.id}"/>
+                <td th:text="${souvenir.souvenirName}"/>
+                <td th:text="|${souvenir.manufacturer.companyName}, ${souvenir.manufacturer.state}|"/>
+                <td th:text="${souvenir.date}"/>
+                <td th:text="${souvenir.price}"/>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:if="${#lists.isEmpty(souvenirs)}">
+        There is no souvenirs from given state
+    </div>
+    <br/>
+    <hr/>
+    <a th:href="@{/utils}">Go to action list</a>
+    <br/>
+    <a th:href="@{/}">Go to starting page</a>
+</body>
+</html>

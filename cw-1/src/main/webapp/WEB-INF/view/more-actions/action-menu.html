@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<body>
+<button type="submit"><a th:href="@{/utils/souvenir_from_state}">Get souvenirs from state</a></button>
+<br/>
+<button type="submit"><a th:href="@{/utils/manufacturer_with_price}">Get manufacturers where price less than given</a></button>
+<br/>
+<button type="submit"><a th:href="@{/utils/manufacturer_with_produced_souvenirs}">Get souvenirs grouped by manufacturer</a></button>
+<br/>
+<button type="submit"><a th:href="@{/utils/manufacturer_by_given_souvenir_and_year}">Get manufacturers by given souvenir name and year of creation</a></button>
+<br/>
+<button type="submit"><a th:href="@{/utils/souvenirs_grouped_by_year}">Get souvenirs grouped by year</a></button>
+</body>
+</html>

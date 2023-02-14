@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+    <form th:method="PATCH" th:action="@{/manufacturers/{id}(id=${manufacturerToEdit.id})}" th:object="${manufacturerToEdit}">
+        <label for="id">Id: </label>
+        <input type="number" th:field="*{id}" id="id" readonly/>
+        <br/>
+        <label for="manufacturerName">Company name: </label>
+        <input type="text" th:field="*{companyName}" id="manufacturerName" />
+        <div style="color: red;" th:if="${#fields.hasErrors('companyName')}" th:errors="*{companyName}">Error company name input</div>
+        <br/>
+        <label for="state">State: </label>
+        <input type="text" th:field="*{state}" id="state" />
+        <div style="color: red;" th:if="${#fields.hasErrors('state')}" th:errors="*{state}">Error state input</div>
+        <br/>
+
+        <input type="submit" value="Edit" />
+    </form>
+</body>
+</html>

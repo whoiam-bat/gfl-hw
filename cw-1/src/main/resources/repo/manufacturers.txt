@@ -1,0 +1,5 @@
+1	Tracker.io	Ukraine
+2	Monobank	USA
+3	PrivatBank	Ukraine
+4	Alfabank	Great Britain
+5	Meta	USA

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:method="GET" th:action="@{/utils/manufacturer_by_given_souvenir_and_year/find}">
+  <label for="souvenirName"></label>
+  <input type="text" name="souvenirName" id="souvenirName" placeholder="Input souvenirName"/>
+  <label for="year"></label>
+  <input type="number" name="year" id="year" placeholder="Input year"/>
+
+  <input type="submit" value="Find"/>
+</form>
+<br/>
+<hr/>
+
+<div th:if="${not #lists.isEmpty(manufacturers)}">
+  <table border="2px solid">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Manufacturer name</th>
+      <th>State</th>
+    </tr>
+    </thead>
+    <tbody th:each="manufacturer : ${manufacturers}">
+    <tr>
+      <td th:text="${manufacturer.id}"/>
+      <td th:text="${manufacturer.companyName}"/>
+      <td th:text="${manufacturer.state}"/>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div th:if="${#lists.isEmpty(manufacturers)}">
+  There is no records with given data
+</div>
+<br/>
+<hr/>
+<a th:href="@{/utils}">Go to action list</a>
+<br/>
+<a th:href="@{/}">Go to starting page</a>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:method="GET" th:action="@{/utils/manufacturer_with_price/find}">
+    <label for="price"></label>
+    <input type="number" name="price" id="price" placeholder="Input price"/>
+
+    <input type="submit" value="Find"/>
+</form>
+<br/>
+<hr/>
+
+<div th:if="${not #lists.isEmpty(souvenirList)}">
+    <table border="2px solid">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Manufacturer name</th>
+            <th>State</th>
+            <th>Souvenirs</th>
+        </tr>
+        </thead>
+        <tbody th:each="souvenir : ${souvenirList}">
+        <tr>
+            <td th:text="${souvenir.manufacturer.id}"/>
+            <td th:text="${souvenir.manufacturer.companyName}"/>
+            <td th:text="${souvenir.manufacturer.state}"/>
+            <td th:text="|${souvenir.souvenirName}, ${souvenir.price}|"/>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:if="${#lists.isEmpty(souvenirList)}">
+    There is no manufacturers with souvenir price less than given
+</div>
+<br/>
+<hr/>
+<a th:href="@{/utils}">Go to action list</a>
+<br/>
+<a th:href="@{/}">Go to starting page</a>
+</body>
+</html>

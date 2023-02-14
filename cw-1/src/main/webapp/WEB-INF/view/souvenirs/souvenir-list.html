@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Souvenirs</title>
+</head>
+<body>
+    <!--/*@thymesVar id="souvenirList" type="java.util.List<ua.com.drabchak.demo.model.Souvenir>"*/-->
+    <table border="2px solid">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Souvenir name</th>
+                <th>Manufacturer</th>
+                <th>Date</th>
+                <th>Price</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody th:each="souvenir : ${souvenirList}">
+            <tr>
+                <td th:text="${souvenir.id}"/>
+                <td th:text="${souvenir.souvenirName}"/>
+                <td th:text="${souvenir.manufacturer.companyName}"/>
+                <td th:text="${souvenir.date}"/>
+                <td th:text="${souvenir.price}"/>
+                <td>
+                    <form th:method="GET" th:action="@{/souvenirs/{id}/edit(id=${souvenir.id})}">
+                        <input type="submit" value="Edit" />
+                    </form>
+                </td>
+                <td>
+                    <form th:method="DELETE" th:action="@{/souvenirs/{id}/delete(id=${souvenir.id})}">
+                        <input type="submit" value="Delete" />
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/souvenirs/new">Add new souvenir</a>
+</body>
+</html>

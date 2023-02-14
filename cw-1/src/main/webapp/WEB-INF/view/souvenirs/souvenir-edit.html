@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+    <!--/*@thymesVar id="souvenirToEdit" type="ua.com.drabchak.demo.model.Souvenir"*/-->
+
+    <form th:method="PATCH" th:action="@{/souvenirs/{id}(id=${souvenirToEdit.id})}" th:object="${souvenirToEdit}">
+        <label for="id">Id: </label>
+        <input type="number" th:field="*{id}" id="id"/>
+        <div style="color: red;" th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Error id input</div>
+        <br/>
+        <label for="souvenirName">Name: </label>
+        <input type="text" th:field="*{souvenirName}" id="souvenirName" />
+        <div style="color: red;" th:if="${#fields.hasErrors('souvenirName')}" th:errors="*{souvenirName}">Souvenir name input error</div>
+        <br/>
+        <input type="hidden" th:field="*{manufacturerId}" readonly/>
+        <label for="date">Date: </label>
+        <input type="date" th:field="*{date}" id="date"/>
+        <div style="color: red;" th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Date input error</div>
+        <br/>
+        <label for="price">Price: </label>
+        <input type="number" th:field="*{price}" id="price"/>
+        <div style="color: red;" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price input error</div>
+        <br/>
+
+        <input type="submit" value="Edit" />
+    </form>
+</body>
+</html>

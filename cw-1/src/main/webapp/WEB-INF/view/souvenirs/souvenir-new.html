@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new souvenir</title>
+</head>
+<body>
+    <form th:method="POST" th:action="@{/souvenirs}" th:object="${newSouvenir}">
+        <label for="id">Id: </label>
+        <input type="number" th:field="*{id}" id="id"/>
+        <div style="color: red;" th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Error id input</div>
+        <br/>
+        <label for="souvenirName">Name: </label>
+        <input type="text" th:field="*{souvenirName}" id="souvenirName" />
+        <div style="color: red;" th:if="${#fields.hasErrors('souvenirName')}" th:errors="*{souvenirName}">Souvenir name input error</div>
+        <br/>
+        <label for="manufacturer">Manufacturer: </label>
+        <select th:field="*{manufacturerId}" id="manufacturer">
+            <option th:each="it : ${availableManufacturers}" th:value="${it.id}" th:text="${it.companyName}"></option>
+        </select>
+        <div style="color: red;" th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}">Manufacturer input error</div>
+        <br/>
+        <label for="date">Date: </label>
+        <input type="date" th:field="${newSouvenir.date}" id="date"/>
+        <div style="color: red;" th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Date input error</div>
+        <br/>
+        <label for="price">Price: </label>
+        <input type="number" th:field="*{price}" id="price"/>
+        <div style="color: red;" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price input error</div>
+        <br/>
+
+        <input type="submit" value="Add"/>
+    </form>
+</body>
+</html>

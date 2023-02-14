@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manufacturer</title>
+</head>
+<body>
+
+    <!--/*@thymesVar manufacturer="manufacturer" type="ua.com.drabchak.demo.model.Manufacturer"*/-->
+    <p th:text="|${manufacturer.id}, ${manufacturer.companyName}, ${manufacturer.state}|">VALUE</p>
+    <br/>
+    <hr/>
+    <div th:if="${not #lists.isEmpty(manufacturerSouvenirs)}">
+        <div th:each="souvenir : ${manufacturerSouvenirs}">
+            <p th:text="|${souvenir.souvenirName}, ${souvenir.price}, ${souvenir.date}|">VALUE</p>
+        </div>
+    </div>
+
+</body>
+</html>

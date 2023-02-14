@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--/*@thymesVar id="souvenirs" type="java.util.Map<java.lang.Integer, java.util.List<ua.com.drabchak.demo.model.Souvenir>>"*/-->
+
+<div th:if="${not #maps.isEmpty(souvenirs)}">
+  <table border="2px solid">
+    <thead>
+    <tr>
+      <th>Year</th>
+      <th>Souvenirs</th>
+    </tr>
+    </thead>
+    <tbody th:each="entry : ${souvenirs}">
+    <tr>
+      <td th:text="${entry.key}"/>
+      <td>
+        <table>
+          <tr th:each="value : ${entry.value}">
+            <td th:text="|${value.id}, ${value.souvenirName}, ${value.manufacturer.companyName}, ${value.date}, ${value.price}|"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div th:if="${#maps.isEmpty(souvenirs)}">
+  There is no records
+</div>
+<br/>
+<hr/>
+<a th:href="@{/utils}">Go to action list</a>
+<br/>
+<a th:href="@{/}">Go to starting page</a>
+</body>
+</html>

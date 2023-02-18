@@ -6,44 +6,46 @@
     <title>Manufacturers</title>
 </head>
 <body>
-    <!--/*@thymesVar id="manufacturerList" type="java.util.List<ua.com.drabchak.demo.model.Manufacturer>"*/-->
+<!--/*@thymesVar id="manufacturerList" type="java.util.List<ua.com.drabchak.demo.model.Manufacturer>"*/-->
 
     <div>
         <table border="solid 2px;">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Manufacturer name</th>
-                    <th>State</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
+            <tr>
+                <th>ID</th>
+                <th>Manufacturer name</th>
+                <th>State</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
             </thead>
-            <tbody th:each="manufacturer : ${manufacturerList}" >
-                <tr>
-                    <td th:text="${manufacturer.id}"/>
-                    <td th:text="${manufacturer.companyName}"/>
-                    <td th:text="${manufacturer.state}"/>
-                    <td>
-                        <form th:method="GET" th:action="@{/manufacturers/{id}/edit(id=${manufacturer.id})}">
-                            <input type="submit" value="Edit">
-                        </form>
-                    </td>
-                    <td>
-                        <form th:method="DELETE" th:action="@{/manufacturers/{id}/delete(id=${manufacturer.id})}">
-                            <input type="submit" value="Delete">
-                        </form>
-                    </td>
-                    <td>
-                        <form th:method="GET" th:action="@{/manufacturers/{id}(id=${manufacturer.id})}">
-                            <input type="submit" value="Info">
-                        </form>
-                    </td>
-                </tr>
+            <tbody th:each="manufacturer : ${manufacturerList}">
+            <tr>
+                <td th:text="${manufacturer.id}"/>
+                <td th:text="${manufacturer.companyName}"/>
+                <td th:text="${manufacturer.state}"/>
+                <td>
+                    <form th:method="GET" th:action="@{/manufacturers/{id}/edit(id=${manufacturer.id})}">
+                        <input type="submit" value="Edit">
+                    </form>
+                </td>
+                <td>
+                    <form th:method="DELETE" th:action="@{/manufacturers/{id}/delete(id=${manufacturer.id})}">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+                <td>
+                    <form th:method="GET" th:action="@{/manufacturers/{id}(id=${manufacturer.id})}">
+                        <input type="submit" value="Info">
+                    </form>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>
-<a href="/manufacturers/new">Add new manufacturer</a>
+    <a href="/manufacturers/new">Add new manufacturer</a>
+    <br>
+    <a th:href="@{/}">Go to starting page</a>
 </body>
 </html>

@@ -34,9 +34,11 @@ It is a simple Spring MVC based CRUD application with structure:
 * `http://localhost:8080/utils` - this url forwards user to all advanced operations with records 
 
 ## UPD
-After the first launch of the application, a `target` folder will be created in the project root.
+1. After the first launch of the application, a `target` folder will be created in the project root.
 And the files ith data will be placed at the specified pat `target/cw-1/WEB-INF/classes/repo`.
 Thus, after the program is completed, your "repository" will contain all the new data you entered.
 If you want to reset "data storage" just run following command:
 
 ![img.png](readme-imgs/img.png)
+2. If after deleting adding or editing any record you don't see any changes, then reload current page.
+This happens because of that files is used as data storage instead of database, and there is need some time before any changes apply.    
